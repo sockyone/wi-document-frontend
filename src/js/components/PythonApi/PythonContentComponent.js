@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import jsonData from "./../../../assets/json/lib.json";
 
 
@@ -38,17 +38,22 @@ class PythonContent extends Component {
 
     render() {
         let content = jsonData[this.props.match.params.id];
+        if (content == null) {
+            return <p>Loading...</p>
+        }
         let lists = Object.keys(content).map(value=>{
             return (
                 <div style={{margin: "50px", borderTop: '10px', borderBottom: '10px'}}>
                     <h3>{value}</h3>
                     <h4>Required:</h4>
+                    
                     {Object.keys(content[value]['params']['required']).map(value2 => {
+                        console.log(value2);
                         return <p>{value2}: {content[value]['params']['required'][value2]}</p>
                     })}
                     <h4>Optional:</h4>
                     {Object.keys(content[value]['params']['optional']).map(value2 => {
-                        return <p>{value2}: {content[value]['params']['required'][value2]}</p>
+                        return <p>{value2}: {content[value]['params']['optional'][value2]}</p>
                     })}
                     <h4>Returns: {content[value]['returns']}</h4>
                     <h4>Explain: {content[value]['explain']}</h4>

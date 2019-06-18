@@ -18,6 +18,9 @@
             "params": {
                 "required": {
                     "token": "String. Your token string."
+                },
+                "optional": {
+
                 }
             },
             "returns": "A Client object for this login session", 
@@ -231,7 +234,17 @@
             "example": "client = wilib.loginByToken('YOUR_TOKEN')\nhistogram = client.getHistogramByName('Example Histogram', 'Example Project')\nhistogram.delete()"
         },
         "wiSavefig(plt, fileName, **data)": {
+            "params": {
+                "required": {
+                    
+                },
+                "optional": {
 
+                }
+            },
+            "returns": "",
+            "explain": "",
+            "example": ""
         },
         "newProject(**dict)": {
             "params": {

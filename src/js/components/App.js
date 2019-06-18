@@ -15,7 +15,7 @@ class App extends Component {
                 <div>
                     <Route exact path="/" component={HomePage} />
                     <Route exact path="/python" component={HomePage} />
-                    <Route exact path="/python/:id" component={PythonComponent} />
+                    <Route path="/python/:id" component={PythonComponent} />
                 </div>
             </Router>
         );

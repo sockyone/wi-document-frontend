@@ -63,7 +63,7 @@ class List extends Component {
 
     render() { 
         let lists = Object.keys(this.props.data).map((value, index) => {
-            return <Link key={index} className="item" to={`/python/${this.props.group.toLowerCase()}`}>{value.substr(0, value.indexOf('('))}</Link>
+            return <Link key={index} className="item" to={`/python/${this.props.group}`}>{value.substr(0, value.indexOf('('))}</Link>
         });
         return (
             <div className="item">

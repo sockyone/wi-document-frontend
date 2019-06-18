@@ -48,11 +48,12 @@ class PythonContent extends Component {
                     <h4>Required:</h4>
                     
                     {Object.keys(content[value]['params']['required']).map(value2 => {
-                        console.log(value2);
+                        if (content[value]['params']['required'])
                         return <p>{value2}: {content[value]['params']['required'][value2]}</p>
                     })}
                     <h4>Optional:</h4>
                     {Object.keys(content[value]['params']['optional']).map(value2 => {
+                        if (content[value]['params']['optional'])
                         return <p>{value2}: {content[value]['params']['optional'][value2]}</p>
                     })}
                     <h4>Returns: {content[value]['returns']}</h4>

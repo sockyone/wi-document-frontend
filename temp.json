@@ -1,0 +1,15 @@
+"edit(**dict) **expired": {
+    "params": {
+        "required": {
+        }, 
+        "optional": {
+            "dict.name": "String. new name",
+            "dict.alias": "String. new alias",
+            "dict.company": "String. new company",
+            "dict.department": "String. new department",
+            "dict.description": "String. new description"
+        }
+    },
+    "returns": "Return True if successfully edit this project, False if get some error",
+    "explain": "Edit this project info",
+    "example": "project = client.getProjectById(56)\nsuccess = project.edit(name='new name', company='your company',description='example description')\nif success:\n\tprint('edit successful')"

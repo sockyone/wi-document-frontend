@@ -6,7 +6,7 @@ import { PythonContentComponent } from "./PythonContentComponent.js";
 export class PythonComponent extends Component {
     constructor(props) {
         super(props);
-        console.log(this.props);
+        // console.log(this.props);
     }
 
     render() {
@@ -14,23 +14,24 @@ export class PythonComponent extends Component {
             <List key={index} data={jsonData[value]} group={value} />
         );
         return (
-            <div className = "ui grid">
-                <div className = "row">
-                <div className = "three wide column">
-                <div className="ui stackable large vertical menu" style={{ float: "left" }}>
-                    <a className="item" style={{textAlign: "center"}}>Menu</a>
-                    <div className="item">
-                        <div className="ui small icon input">
-                            <input type="text" placeholder="Search API..." />
-                            <i className="search icon"></i>
+            <div className="ui grid">
+                <div className="row">
+                    <div className="three wide column">
+                        <div className="ui stackable large vertical menu" 
+                                style={{ float: "left", position: 'fixed', maxHeight: "800px", overflowY: "auto", width: '18.75%', maxWidth: '250px' }}>
+                            <a className="item" style={{ textAlign: "center" }}>Menu</a>
+                            <div className="item" style={{paddingTop: '8px', paddingRight:'8px'}}>
+                                {/* <div className="ui small icon input">
+                                    <input type="text" placeholder="Search API..." />
+                                    <i className="search icon"></i>
+                                </div> */}
+                                {lists}
+                            </div>
                         </div>
-                        {lists}
                     </div>
-                </div>
-                </div>
-                <div className="thirteen wide column">
-                    <PythonContentComponent />
-                </div>
+                    <div className="thirteen wide column">
+                        <PythonContentComponent />
+                    </div>
                 </div>
             </div>
         );
@@ -53,25 +54,25 @@ class List extends Component {
     }
 
     openSubMenu(e) {
-        console.log('clicked');
-        this.setState((state, props)=> {
+        // console.log('clicked');
+        this.setState((state, props) => {
             return {
                 isHidden: !state.isHidden
             }
         });
     }
 
-    render() { 
+    render() {
         let lists = Object.keys(this.props.data).map((value, index) => {
-            return <Link key={index} className="item" to={`/python/${this.props.group}`}>{value.substr(0, value.indexOf('('))}</Link>
+            return <Link key={index} className="item" to={`/python/${this.props.group}?index=${index}`}>{value.substr(0, value.indexOf('('))}</Link>
         });
         return (
             <div className="item">
                 <div onClick={this.openSubMenu}>
-                <b>{this.props.group}</b>
-                <i className = {this.getClass()} style={{float:"right"}}></i>
+                    <b>{this.props.group}</b>
+                    <i className={this.getClass()} style={{ float: "right" }}></i>
                 </div>
-                <div className="menu" hidden = {this.state.isHidden} >
+                <div className="menu" hidden={this.state.isHidden} >
                     {lists}
                 </div>
             </div>
